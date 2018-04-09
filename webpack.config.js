@@ -13,7 +13,7 @@ module.exports = (env) => {
         resolve: { extensions: [ '.js', '.ts' ] },
         output: {
             filename: '[name].js',
-            publicPath: 'dist/' // Webpack dev middleware, if enabled, handles requests for this URL prefix
+            publicPath: 'dist/' // Webpack dev middleware, if enabled, handles requests for this URL prefix. Note dist folder is in wwwroot/dist as a result.
         },
         module: {
             rules: [
