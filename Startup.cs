@@ -14,8 +14,22 @@ namespace vega
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IHostingEnvironment _currentEnvironment;
+        // In terminal start application with ASPNETCORE_ENVIRONMENT=Development dotnet run
+        // Start Docker MySQL instance with - 
+        // Open MacSQLPro to monitor db
+        // Check containers running with docker ps.
+        // Start docker container with - 
+        // sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=MyComplexPassword!234' -p 1433:1433 -d microsoft/mssql-server-linux
+        // Then apply migrations including seeding data using - 
+        // dotnet ef database update SeedDatabase (or name of latest migration file)
+
+        // Log container activity with docker ps -a
+        // Stop docker containers with doccker stop (container ID)
+
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
+            _currentEnvironment = env;
             Configuration = configuration;
         }
 
@@ -35,7 +49,9 @@ namespace vega
             // loggerFactort.AddConsole(Configuration.GetSection....)
             // loggerFactory.AddDebug();
 
-            if (env.IsDevelopment())
+            // if (env.IsDevelopment())
+
+            if (_currentEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
