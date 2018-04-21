@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using vega.Persistence;
+using AutoMapper;
 
 namespace vega
 {
@@ -27,6 +28,10 @@ namespace vega
         // Log container activity with docker ps -a
         // Stop docker containers with doccker stop (container ID)
 
+        // 'ctor' for constructor abbrev
+        // 'cmd .' on objects to give context menu and option to add namespace to top of file.
+        // difference between lists and collections is that a list gives the ability to access the objects in a collection using their index.
+
         public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             _currentEnvironment = env;
@@ -38,6 +43,7 @@ namespace vega
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper();
             services.AddDbContext<VegaDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             // Add framework services (ie for dependency injection)
             services.AddMvc();
