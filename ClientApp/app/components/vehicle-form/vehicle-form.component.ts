@@ -28,6 +28,7 @@ export class VehicleFormComponent implements OnInit {
   constructor(private makeService: MakeService,
               private featureService: FeatureService) { }
 
+  // initial GET requests from services for makes and models.
   ngOnInit() {
     this.makeService.getMakes().subscribe(makes => {
       this.makes = makes 
@@ -39,6 +40,7 @@ export class VehicleFormComponent implements OnInit {
     });
   }
 
+  // select model and find related makes.
   onMakeChange() {
     var selectedMake = this.makes.find(m => m.id == this.vehicle.make);
     this.models = selectedMake ? selectedMake.models : [];

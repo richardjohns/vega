@@ -17,7 +17,7 @@ namespace vega.Controllers
             this.context = context;
         }
 
-        // explicity define that GetMakes is a GET request and supply the endpoint.
+        // explicity defines that GetMakes is a GET request and supply the endpoint.
         [HttpGet("/api/makes")]
         // define action - want to return list of makes.
         public async Task<IEnumerable<MakeResource>> GetMakes()

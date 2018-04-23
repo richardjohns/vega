@@ -32,6 +32,10 @@ namespace vega
         // 'cmd .' on objects to give context menu and option to add namespace to top of file.
         // difference between lists and collections is that a list gives the ability to access the objects in a collection using their index.
 
+        // Docker instructions
+        // To run container locally, build app with: dotnet publish -c Release -o out
+        // then build docker image with: docker build -t docker-vega
+
         public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             _currentEnvironment = env;
